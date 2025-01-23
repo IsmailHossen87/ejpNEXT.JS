@@ -1,48 +1,20 @@
-// // app/profile/page.js
-// import { useKindeAuth } from "@kinde-oss/kinde-auth-nextjs";
-// import React from "react";
-
-// const Profile = () => {
-//     const {isAuthenticated,user}=useKindeAuth() 
-
-//   if (!isAuthenticated) {
-//     if (typeof window !== "undefined") {
-//       window.location.href = "/login";
-//     }
-//     return null;
-//   }
-
-//   return (
-//     <div className="p-4">
-//       <h1 className="text-2xl font-bold">Welcome to your profile!</h1>
-//       <p>Hello, {user?.first_name || "User"}!</p>
-//     </div>
-//   );
-// };
-
-// export default Profile;
 
 
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-import React from "react";
+export default async function Profile() {
+  const { isAuthenticated, getUser } = getKindeServerSession();
 
+  const user = await getUser();
 
-const Profile = () => {
-//   const { isAuthenticated, user } = useKindeAuth(); 
-
-//   if (!isAuthenticated) {
-//     if (typeof window !== "undefined") {
-//       window.location.href = "/login";
-//     }
-//     return null;
-//   }
-
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold">Welcome to your profile!</h1>
-      {/* <p>Hello, {user?.first_name || "User"}!</p> */}
+  return (await isAuthenticated()) ? (
+    <section className="container mx-auto min-h-screen">
+        <p className="text-3xl font-semibold">hey {user?.family_name} {user?.given_name}👋</p>
+    </section>
+  ) : (
+    <div className="container mx-auto min-h-screen text-2xl">
+       This page is protected, please <LoginLink className="font-bold underline">Login</LoginLink> to view it
     </div>
   );
-};
-
-export default Profile;
+}
