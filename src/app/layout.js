@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <div className="border-b-2 ">
           <div className="">
             <p className="text-xl font-bold">Practice NextJs</p>
-            <p>Fade Data</p>
+            <p>Fake Data</p>
           </div>
           <Navbar></Navbar>
         </div>

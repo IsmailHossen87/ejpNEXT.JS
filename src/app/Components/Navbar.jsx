@@ -12,16 +12,16 @@ const Navbar = async () => {
  
   const links = (
     <>
-      <li> <Link href={"/"}>Blog</Link></li>
-      <li> <Link href={"/profile"}>Profile</Link> </li>
+      <li className='font-bold'> <Link href={"/"}>Blog</Link></li>
+      <li className='font-bold'> <Link href={"/profile"}>Profile</Link> </li>
       {isUserAuthenticated ? (
         <>
-          <li><LogoutLink>Log out</LogoutLink> </li>
+          <li className='font-bold'><LogoutLink>Log out</LogoutLink> </li>
         </>
       ) : (
         <>
-        <li> <LoginLink>Login</LoginLink></li>
-        <li> <RegisterLink>Register</RegisterLink> </li>
+        <li className='font-bold'> <LoginLink>Login</LoginLink></li>
+        <li className='font-bold'> <RegisterLink>Register</RegisterLink> </li>
         </>
       )}
     </>
