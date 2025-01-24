@@ -14,7 +14,7 @@ export default async function Profile() {
     </section>
   ) : (
     <div className="container mx-auto min-h-screen text-2xl">
-       This page is protected, please <LoginLink className="font-bold underline">Login</LoginLink> to view it
+       This page is protected <LoginLink className="font-bold underline">Login</LoginLink> to view it
     </div>
   );
 }
